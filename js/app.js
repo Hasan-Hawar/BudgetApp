@@ -24,6 +24,7 @@ let UIController = (function () {
       }
   }
 })();
+
 // Global Conroller
 let Controller = (function (budgetCtrl, UICtrl) {
 
@@ -38,6 +39,16 @@ let Controller = (function (budgetCtrl, UICtrl) {
             }
         });
     }
+
+
+    let ctrlAddItem = function(){
+    // 1.   get the field input data
+    let input = UICtrl.getInput();
+    // 2.   add the item to the budget contoller
+    // 3.   add the item to UI
+    // 4.   calculate the budget
+    // 5.   display the budget on the UI
+    }
     return {
         init: function(){
             console.log('Application has started.');
@@ -46,4 +57,6 @@ let Controller = (function (budgetCtrl, UICtrl) {
     };
 })(budgetController, UIController);
 
+
 Controller.init();
+
