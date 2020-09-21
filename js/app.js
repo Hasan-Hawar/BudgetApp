@@ -39,4 +39,11 @@ let Controller = (function (budgetCtrl, UICtrl) {
             }
         });
     }
+    return {
+        init: function(){
+            console.log('Application has started.');
+            setupEventListiner();
+        }
+    };
 })(budgetController, UIController);
+Controller.init();
