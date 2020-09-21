@@ -11,6 +11,19 @@ let UIController = (function () {
       inputBtn: '.add__btn'
 
   };
+  return {
+      getInput: function(){
+          return {
+            type: document.querySelector(DOMStrings.inputType).value, // will be either inc or exp ..
+            description : document.querySelector(DOMStrings.inputDescription).value,
+            value : document.querySelector(DOMStrings.inputValue).value
+          };
+      },
+
+      getDomStrings : function(){
+          return DOMStrings;
+      }
+  }
 })();
 // Global Conroller
 let Controller = (function (budgetCtrl, UICtrl) {
