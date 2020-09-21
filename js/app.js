@@ -1,6 +1,5 @@
 // Budget Controller
 let budgetController = (function () {
-  // some code
 })();
 // UI Controller
 let UIController = (function () {
@@ -46,4 +45,5 @@ let Controller = (function (budgetCtrl, UICtrl) {
         }
     };
 })(budgetController, UIController);
+
 Controller.init();
