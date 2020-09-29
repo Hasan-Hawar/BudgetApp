@@ -211,6 +211,25 @@ let Controller = (function (budgetCtrl, UICtrl) {
     // 3. display the budget on the UI
     UICtrl.displayBudget(budget);
   };
+  
+  let ctrlAddItem = function () {
+    let input, newItem;
+    
+    // 1.   get the field input data
+    input = UICtrl.getInput();
+    
+    if(input.description !== "" && !isNaN(input.value) && input.value > 0){
+      // 2.   add the item to the budget contoller
+      newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+     
+      // 3.   add the item to UI
+      UICtrl.addListItem(newItem, input.type);
+      
+      // 4. clear the fields ...
+      UICtrl.clearFields();
+      
+      // 5. calculate and update the budget
+      updateBudget();
     }
 
 
