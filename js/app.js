@@ -198,6 +198,17 @@ let UIController = (function () {
 
 // Global Conroller
 let Controller = (function (budgetCtrl, UICtrl) {
+  let setupEventListiner = function () {
+    let Dom = UICtrl.getDomStrings();
+
+    document.querySelector(Dom.inputBtn).addEventListener("click", ctrlAddItem);
+    document.addEventListener('keypress', function (event) {
+      if (event.keyCode === 13 || event.which === 13) {
+        ctrlAddItem();
+      }
+    });
+    document.querySelector(Dom.container).addEventListener('click', ctrlDeleteItem);
+  };
 
     let setupEventListiner = function(){
   let updateBudget = function(){
@@ -257,8 +268,19 @@ let Controller = (function (budgetCtrl, UICtrl) {
             setupEventListiner();
         }
     };
+  return {
+    init: function () {
+      console.log("Application has started.");
+      UICtrl.displayBudget({
+        budget: 0,
+        totalInc: 0,
+        totalExp: 0,
+        percentage: -1
+      });
+      setupEventListiner();
+    },
+  };
 })(budgetController, UIController);
-
 
 Controller.init();
 
