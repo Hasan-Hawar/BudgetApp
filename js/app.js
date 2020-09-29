@@ -159,6 +159,11 @@ let UIController = (function () {
 
       document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
     },
+
+    deleteListItem: function(selectorID){
+      let el = document.getElementById(selectorID);
+      el.parentNode.removeChild(el);
+    },
 })();
 
 // Global Conroller
