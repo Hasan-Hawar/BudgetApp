@@ -231,15 +231,25 @@ let Controller = (function (budgetCtrl, UICtrl) {
       // 5. calculate and update the budget
       updateBudget();
     }
+  let ctrlDeleteItem = function(event){
+    let itemId, splitId, type, ID;
 
+    itemId = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
-    let ctrlAddItem = function(){
-    // 1.   get the field input data
-    let input = UICtrl.getInput();
-    // 2.   add the item to the budget contoller
-    // 3.   add the item to UI
-    // 4.   calculate the budget
-    // 5.   display the budget on the UI
+    if(itemId){
+
+      // inc-1
+      splitId = itemId.split('-');
+      type = splitId[0];
+      ID = parseInt(splitId[1]);
+
+      // 1. delete the item from data structure
+      budgetCtrl.deleteItem(type, ID);
+
+      // 2. delete the item from the UI
+      UICtrl.deleteListItem(itemId);
+      // 3. Update and show the new budget
+      updateBudget();
     }
     return {
         init: function(){
