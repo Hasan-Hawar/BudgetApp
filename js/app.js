@@ -164,6 +164,19 @@ let UIController = (function () {
       let el = document.getElementById(selectorID);
       el.parentNode.removeChild(el);
     },
+
+    clearFields: function(){
+      let fields, fieldsArray;
+      fields = document.querySelectorAll(DOMStrings.inputDescription + ', ' + DOMStrings.inputValue);
+      
+      fieldsArray = Array.prototype.slice.call(fields);
+
+      fieldsArray.forEach((cur) =>{
+        cur.value = '';
+        }); 
+        fieldsArray[0].focus();
+        
+    },
 })();
 
 // Global Conroller
