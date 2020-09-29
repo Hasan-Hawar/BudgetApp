@@ -32,6 +32,29 @@ let budgetController = (function () {
     percentage: -1
   };
 
+  return {
+    addItem: function (type, des, val) {
+      let newItem, ID;
+
+      //    CREATE NEW ID ...
+      if (data.allItems[type].length > 0) {
+        ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+      } else {
+        ID = 0;
+      }
+
+      //    CREATE NEW ITEM BASED ON 'inc' OR 'exp' TYPE ...
+      if (type === "exp") {
+        newItem = new Expense(ID, des, val);
+      } else if (type === "inc") {
+        newItem = new income(ID, des, val);
+      }
+
+      //    PUSH THE NEW ITEM INTO THE ARRAY ...
+      data.allItems[type].push(newItem);
+      //    RETURN THE NEW ADDED ITEM
+      return newItem;
+    },
 })();
 
 // UI Controller
