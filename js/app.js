@@ -118,16 +118,6 @@ let UIController = (function () {
     container: '.container',
   };
   return {
-      getInput: function(){
-          return {
-            type: document.querySelector(DOMStrings.inputType).value, // will be either inc or exp ..
-            description : document.querySelector(DOMStrings.inputDescription).value,
-            value : document.querySelector(DOMStrings.inputValue).value
-          };
-      },
-
-      getDomStrings : function(){
-          return DOMStrings;
     getInput: function () {
       return {
         type: document.querySelector(DOMStrings.inputType).value, // will be either inc or exp ..
@@ -146,7 +136,6 @@ let UIController = (function () {
           element = DOMStrings.expenseContainer;
         html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
       }
-  }
 
       // Replace the placeholder text with an actual text
 
@@ -210,7 +199,6 @@ let Controller = (function (budgetCtrl, UICtrl) {
     document.querySelector(Dom.container).addEventListener('click', ctrlDeleteItem);
   };
 
-    let setupEventListiner = function(){
   let updateBudget = function(){
    
     // 1. calculate the budget
@@ -242,6 +230,8 @@ let Controller = (function (budgetCtrl, UICtrl) {
       // 5. calculate and update the budget
       updateBudget();
     }
+    
+  };
   let ctrlDeleteItem = function(event){
     let itemId, splitId, type, ID;
 
@@ -262,12 +252,7 @@ let Controller = (function (budgetCtrl, UICtrl) {
       // 3. Update and show the new budget
       updateBudget();
     }
-    return {
-        init: function(){
-            console.log('Application has started.');
-            setupEventListiner();
-        }
-    };
+  }
   return {
     init: function () {
       console.log("Application has started.");
@@ -283,4 +268,3 @@ let Controller = (function (budgetCtrl, UICtrl) {
 })(budgetController, UIController);
 
 Controller.init();
-
