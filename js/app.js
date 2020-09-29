@@ -1,28 +1,36 @@
 // Budget Controller
 let budgetController = (function () {
-  
-    let Expense = function(id, description, value){
-        this.id = id;
-        this.description = description;
-        this.value = value;
-    };
+  let Expense = function (id, description, value) {
+    this.id = id;
+    this.description = description;
+    this.value = value;
+  };
 
-    let income = function(id, description, value){
-        this.id = id;
-        this.description = description;
-        this.value = value;
-    };
+  let income = function (id, description, value) {
+    this.id = id;
+    this.description = description;
+    this.value = value;
+  };
 
-   let data = {
-       allItems: {
-            exp: [],
-            inc: [],
-       },
-       total: {
-            exp: 0,
-            inc: 0,
-       }
-   }
+  let calculateTotal = function(type){
+    let sum = 0;
+    data.allItems[type].forEach(el => {
+      sum += el.value;
+    });
+    data.total[type] = sum;
+  };
+  let data = {
+    allItems: {
+      exp: [],
+      inc: [],
+    },
+    total: {
+      exp: 0,
+      inc: 0,
+    },
+    budget: 0,
+    percentage: -1
+  };
 
 })();
 
