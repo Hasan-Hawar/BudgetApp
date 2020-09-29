@@ -55,6 +55,22 @@ let budgetController = (function () {
       //    RETURN THE NEW ADDED ITEM
       return newItem;
     },
+    deleteItem: function(type, id){
+      let ids, index;
+      //  id = 6
+      // ids = [1, 2, 4, 6, 8]
+      //        0  1  2  3  4
+      // index = 3
+
+      ids = data.allItems[type].map(current =>{
+        return current.id;
+      });
+      index = ids.indexOf(id);
+
+      if(index !== -1){
+        data.allItems[type].splice(index, 1);
+      }
+    },
 })();
 
 // UI Controller
