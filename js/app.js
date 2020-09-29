@@ -200,15 +200,17 @@ let UIController = (function () {
 let Controller = (function (budgetCtrl, UICtrl) {
 
     let setupEventListiner = function(){
+  let updateBudget = function(){
+   
+    // 1. calculate the budget
+    budgetCtrl.calculateBudget();
 
-        let Dom = UICtrl.getDomStrings();
+    // 2. Return the Budget
+    let budget = budgetCtrl.getBudget();
 
-        document.querySelector(Dom.inputBtn).addEventListener("click", ctrlAddItem);
-        document.addEventListener("keypress", function (event) {
-            if(event.keyCode === 13 || event.which === 13){
-              ctrlAddItem()
-            }
-        });
+    // 3. display the budget on the UI
+    UICtrl.displayBudget(budget);
+  };
     }
 
 
