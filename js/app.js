@@ -46,6 +46,23 @@ let UIController = (function () {
 
       getDomStrings : function(){
           return DOMStrings;
+    getInput: function () {
+      return {
+        type: document.querySelector(DOMStrings.inputType).value, // will be either inc or exp ..
+        description: document.querySelector(DOMStrings.inputDescription).value,
+        value: parseFloat(document.querySelector(DOMStrings.inputValue).value),
+      };
+    },
+    addListItem: function (obj, type) {
+      let html, newHtml, element;
+      //   create HTML string with placeholder text
+
+      if (type === "inc") {
+          element = DOMStrings.incomeContainer;
+          html = '<div class="item clearfix" id="inc-%id%"> <div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+      } else {
+          element = DOMStrings.expenseContainer;
+        html = '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
       }
   }
 })();
