@@ -185,7 +185,7 @@ let UIController = (function () {
   };
 })();
 
-// Global Conroller
+// GLOBAL APP CONTROLLER
 let Controller = (function (budgetCtrl, UICtrl) {
   let setupEventListiner = function () {
     let Dom = UICtrl.getDomStrings();
@@ -198,6 +198,21 @@ let Controller = (function (budgetCtrl, UICtrl) {
     });
     document.querySelector(Dom.container).addEventListener('click', ctrlDeleteItem);
   };
+
+
+  let updatePercentages = function(){
+    // 1. calc percentages
+
+
+    // 2. Read them from budget controller
+
+
+    // 3. Update the UI with the new percentages
+
+
+  }
+
+
 
   let updateBudget = function(){
    
@@ -229,6 +244,9 @@ let Controller = (function (budgetCtrl, UICtrl) {
       
       // 5. calculate and update the budget
       updateBudget();
+
+      // 6. Calc and Update the percentages
+      updatePercentages();
     }
     
   };
@@ -249,8 +267,12 @@ let Controller = (function (budgetCtrl, UICtrl) {
 
       // 2. delete the item from the UI
       UICtrl.deleteListItem(itemId);
+      
       // 3. Update and show the new budget
       updateBudget();
+
+      // 4. Calc and Update the percentages
+      updatePercentages();
     }
   }
   return {
