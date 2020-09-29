@@ -177,6 +177,23 @@ let UIController = (function () {
         fieldsArray[0].focus();
         
     },
+    getDomStrings: function () {
+      return DOMStrings;
+    },
+    displayBudget: function(obj){
+      document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
+      document.querySelector(DOMStrings.incomeLabel).textContent = obj.totalInc;
+      document.querySelector(DOMStrings.expenseLabel).textContent = obj.totalExp;
+
+      if(obj.percentage > 0){
+        document.querySelector(DOMStrings.percentageLabel).textContent = obj.percentage + '%';
+      }else{
+      document.querySelector(DOMStrings.percentageLabel).textContent = '---';
+
+      }
+    },
+   
+  };
 })();
 
 // Global Conroller
